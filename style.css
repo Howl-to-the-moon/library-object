@@ -1,3 +1,9 @@
 *{
     color: red;
 }
+
+
+.mainContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
