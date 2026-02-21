@@ -31,12 +31,24 @@ function displayBooks(myLibrary){
         /* make it so a new div with a class for the card template n stuff is made that cocntains the content from each book. this for statement is messsed up so research and fix when u work on this later */
        let newCard = document.createElement("div");
         newCard.classList.add("libraryCard");
-        let newTitle = document.createElement("div");
 
+        let newTitle = (document.createElement("div"));
+        newTitle.textContent = myLibrary[i].title;
+
+        let newAuth = document.createElement("div");
+        newAuth.textContent = myLibrary[i].author;
+        
+        let pageCount = document.createElement("div");
+        pageCount.textContent = myLibrary[i].pageCount;
+
+        let isRead = document.createElement("div");
+        isRead.textContent = myLibrary[i].isRead;
+        
+        newCard.append(newTitle, newAuth, pageCount, isRead);
         display.append(newCard);
 
     }
 };
 
 addBookToLibrary("Apathy", "Benson", 235, false);
-
+displayBooks(myLibrary);
