@@ -5,5 +5,16 @@
 
 .mainContainer{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
+
+
+/* Display Card for the information */
+
+.libraryCard{
+    border: 2px solid black;
+    display: grid;
+    justify-content: center;
+}
+
+/* Display Card End */
