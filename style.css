@@ -3,7 +3,7 @@
 }
 
 
-.mainContainer{
+.bookContainer{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -21,7 +21,45 @@
 
 /* input form pop up */
 .form{
-    background-color: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     
+    justify-content: center;
+    align-items: center;
+}
+
+.formBackground{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    opacity: 0.7;
+    background-color: rgb(255, 255, 255);
+}
+
+.formCard{
+    height: 500px;
+    width: 500px;
+    z-index: 1;
+    border: 2px red solid;
+}
+
+.show{
+    display: grid;
+}
+
+.hide{
+    display: none;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 /* form end */
