@@ -15,12 +15,6 @@ function Book(title, author, pageCount, isRead){
     this.author = author;
     this.pageCount = pageCount;
     this.isRead = isRead; 
-  console.log(isRead);
-  if (isRead == false){
-    isRead.textContent = "unread";
-  } else {
-    isRead.textContent = "read";
-  }
     this.id = crypto.randomUUID();
 
 };
@@ -49,17 +43,12 @@ function displayBooks(myLibrary){
         let pageCount = document.createElement("div");
         pageCount.textContent = myLibrary[i].pageCount;
 
-        let holder = document.createElement("div");
-        holder.classList.add("grid");
-
-        let isRead = document.createElement("div");
+        let isRead = document.createElement("button");
+        isRead.classList.add("isRead");
         isRead.textContent = myLibrary[i].isRead;
-
-        let toggle = document.createElement("button");
-        toggle.textContent = "Read?";
         
-        holder.append(isRead, toggle);
-        newCard.append(newTitle, newAuth, pageCount, holder);
+        
+        newCard.append(newTitle, newAuth, pageCount, isRead);
         display.append(newCard);
 
     }
@@ -88,13 +77,23 @@ cancel.addEventListener("click", () => {
     hidePopUp();
 });
 
-submit.addEventListener("click", () => {
+submit.addEventListener("click", (event) => {
+
+    event.preventDefault();
     
     let a = document.getElementById('book_title');
     let b = document.getElementById('book_author');
     let c = document.getElementById('pageCount');
     let d = document.getElementById('isRead');
+
+    if (a.value == '' || b.value == '' || c.value == ''){
+        return;
+    }
+
+
     addBookToLibrary(a.value, b.value, c.value, d.value);
+
+    
 
      clearAll(); 
     displayBooks(myLibrary);
@@ -111,13 +110,23 @@ submit.addEventListener("click", () => {
     let b = document.getElementById('book_author');
     let c = document.getElementById('pageCount');
     let d = document.getElementById('isRead');
-
+    console.log(d.value);
     a.value = '';
     b.value = '';
     c.value = '';
-    d.value = '';
+    
 };
+
+const isReadButton = document.querySelector(".isRead");
+isReadButton.addEventListener("click", () => {
+    if (isReadButton.textContent == "Read"){
+        isReadButton.textContent == "Unread";
+    } else {
+        isReadButton.textContent == "Read";
+    }
+});
  
-addBookToLibrary("Apathy", "Benson", 235, false);
+addBookToLibrary("Apathy", "Benson", 235, 'Read');
+addBookToLibrary("Conflict", "Adam", 254, 'Unread');
 
 displayBooks(myLibrary);
