@@ -20,8 +20,7 @@ function Book(title, author, pageCount, isRead){
 };
 
 function addBookToLibrary(title, author, pageCount, isRead){
-   let temp = new Book(title, author, pageCount, isRead);
-   myLibrary.push(temp);
+   myLibrary.push(new Book(title, author, pageCount, isRead));
 };
 
 
@@ -33,6 +32,7 @@ function displayBooks(myLibrary){
         /* make it so a new div with a class for the card template n stuff is made that cocntains the content from each book. this for statement is messsed up so research and fix when u work on this later */
        let newCard = document.createElement("div");
         newCard.classList.add("libraryCard");
+        newCard.id = myLibrary[i].id;
 
         let newTitle = (document.createElement("div"));
         newTitle.textContent = myLibrary[i].title;
@@ -45,7 +45,8 @@ function displayBooks(myLibrary){
 
         let isRead = document.createElement("button");
         isRead.classList.add("isRead");
-        isRead.textContent = myLibrary[i].isRead;
+        isRead.textContent = (myLibrary[i].isRead);
+
         
         
         newCard.append(newTitle, newAuth, pageCount, isRead);
@@ -91,7 +92,7 @@ submit.addEventListener("click", (event) => {
     }
 
 
-    addBookToLibrary(a.value, b.value, c.value, d.value);
+    addBookToLibrary(a.value, b.value, c.value, d.textContent);
 
     
 
@@ -110,19 +111,19 @@ submit.addEventListener("click", (event) => {
     let b = document.getElementById('book_author');
     let c = document.getElementById('pageCount');
     let d = document.getElementById('isRead');
-    console.log(d.value);
+    
     a.value = '';
     b.value = '';
     c.value = '';
     
 };
 
-const isReadButton = document.querySelector(".isRead");
+let isReadButton = document.querySelector(".isRead");
 isReadButton.addEventListener("click", () => {
     if (isReadButton.textContent == "Read"){
-        isReadButton.textContent == "Unread";
+        isReadButton.textContent = "Unread";
     } else {
-        isReadButton.textContent == "Read";
+        isReadButton.textContent = "Read";
     }
 });
  
@@ -130,3 +131,7 @@ addBookToLibrary("Apathy", "Benson", 235, 'Read');
 addBookToLibrary("Conflict", "Adam", 254, 'Unread');
 
 displayBooks(myLibrary);
+
+console.log(isReadButton.textContent);
+
+console.table(isReadButton);
