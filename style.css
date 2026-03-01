@@ -1,6 +1,3 @@
-*{
-    color: red;
-}
 
 
 .bookContainer{
@@ -8,58 +5,6 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-
-/* Display Card for the information */
-
-.libraryCard{
-    border: 2px solid black;
-    display: grid;
-    justify-content: center;
+.bookContainer > div {
+    border: solid red 2px;
 }
-
-/* Display Card End */
-
-/* input form pop up */
-.form{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    
-    justify-content: center;
-    align-items: center;
-}
-
-.formBackground{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 0;
-    opacity: 0.7;
-    background-color: rgb(255, 255, 255);
-}
-
-.formCard{
-    height: 500px;
-    width: 500px;
-    z-index: 1;
-    border: 2px red solid;
-}
-
-.show{
-    display: grid;
-}
-
-.hide{
-    display: none;
-}
-
-.grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-/* form end */

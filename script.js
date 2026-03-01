@@ -1,4 +1,26 @@
 
+/* 
+
+2/28. Ok look motherfucker.
+
+you need to look back over all these lessons cause you keep flubbing around and not undertsanding shit.
+
+1.) use protoypes to:
+    a.) give button function to toggle between read/unread
+    b.) give button function to delete the card its on
+    
+2.) fix dialog button to set the inital read state. the 3 other values appear to be fine.
+
+
+you should probably actually start from scratch and reread these lessons. maybe tmmrw if its not too much work. please, God i need to understand this.
+
+
+*/
+
+
+
+
+
 
 console.log("yooch");
 
@@ -20,12 +42,8 @@ function Book(title, author, pageCount, isRead){
 };
 
 function addBookToLibrary(title, author, pageCount, isRead){
-   let temp = new Book(title, author, pageCount, isRead);
-   myLibrary.push(temp);
+   myLibrary.push(new Book(title, author, pageCount, isRead));
 };
-
-
-    
 
 function displayBooks(myLibrary){
     let display = document.querySelector(".bookContainer");
@@ -33,6 +51,7 @@ function displayBooks(myLibrary){
         /* make it so a new div with a class for the card template n stuff is made that cocntains the content from each book. this for statement is messsed up so research and fix when u work on this later */
        let newCard = document.createElement("div");
         newCard.classList.add("libraryCard");
+        newCard.id = myLibrary[i].id;
 
         let newTitle = (document.createElement("div"));
         newTitle.textContent = myLibrary[i].title;
@@ -45,7 +64,25 @@ function displayBooks(myLibrary){
 
         let isRead = document.createElement("button");
         isRead.classList.add("isRead");
-        isRead.textContent = myLibrary[i].isRead;
+        isRead.textContent = (myLibrary[i].isRead);
+
+        let deleteBook = document.createElement("button");
+        deleteBook.textContent = "Delete";
+
+        
+
+        isRead.addEventListener("click", () => {
+            console.log("click");
+            
+            if (isRead.textContent == "Read"){
+                isRead.textContent = "Unread";
+            } else {
+                isRead.textContent = "Read";
+            };
+        });
+
+        /* as much as it sucks it takes to clicks to work this is the closests i've gotten. just need to implement the cancel button and get the form screen thing to work and i'm pretty much there to a 'dunctional' library */
+        
         
         
         newCard.append(newTitle, newAuth, pageCount, isRead);
@@ -54,28 +91,7 @@ function displayBooks(myLibrary){
     }
 };
 
-let popUp = document.querySelector(".form");
-function showPopUp(){
-    popUp.classList.remove("hide");
-    popUp.classList.add("show");
-};
-
-function hidePopUp(){
-    popUp.classList.remove("show");
-    popUp.classList.add("hide");
-};
-
-let addBook = document.querySelector(".addBook");
-let cancel = document.querySelector(".cancel");
-let submit = document.querySelector(".submit")
-
- addBook.addEventListener("click", () => {
-    showPopUp();
-}); 
-
-cancel.addEventListener("click", () => {
-    hidePopUp();
-});
+let submit = document.querySelector(".submit");
 
 submit.addEventListener("click", (event) => {
 
@@ -91,13 +107,13 @@ submit.addEventListener("click", (event) => {
     }
 
 
-    addBookToLibrary(a.value, b.value, c.value, d.value);
+    addBookToLibrary(a.value, b.value, c.value, d.textContent);
 
     
 
      clearAll(); 
     displayBooks(myLibrary);
-    hidePopUp();
+    
 });
 
  function clearAll(){
@@ -110,22 +126,18 @@ submit.addEventListener("click", (event) => {
     let b = document.getElementById('book_author');
     let c = document.getElementById('pageCount');
     let d = document.getElementById('isRead');
-    console.log(d.value);
+    
     a.value = '';
     b.value = '';
     c.value = '';
     
 };
 
-const isReadButton = document.querySelector(".isRead");
-isReadButton.addEventListener("click", () => {
-    if (isReadButton.textContent == "Read"){
-        isReadButton.textContent == "Unread";
-    } else {
-        isReadButton.textContent == "Read";
-    }
-});
- 
+
+
+
+
+
 addBookToLibrary("Apathy", "Benson", 235, 'Read');
 addBookToLibrary("Conflict", "Adam", 254, 'Unread');
 
