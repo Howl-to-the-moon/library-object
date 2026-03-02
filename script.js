@@ -1,25 +1,21 @@
 
 /* 
 
-2/28. Ok look motherfucker.
+3/2. this fucking sucks.
 
-you need to look back over all these lessons cause you keep flubbing around and not undertsanding shit.
+ok so i did quickly fix up the shit so what you select on the menu 
+transfers to the thingy, i just need to fix these two fucking buttons man.
 
-1.) use protoypes to:
-    a.) give button function to toggle between read/unread
-    b.) give button function to delete the card its on
-    
-2.) fix dialog button to set the inital read state. the 3 other values appear to be fine.
+something about prototypes, i just need to skim these lessons again.
 
-
-you should probably actually start from scratch and reread these lessons. maybe tmmrw if its not too much work. please, God i need to understand this.
-
+the read/unread works!! just when made a function thats apart of
+the thing, not as a prototype. God help me.
 
 */
 
 
-
-
+let readButton = document.querySelector("#isRead");
+let display = document.querySelector(".bookContainer");
 
 
 console.log("yooch");
@@ -41,12 +37,26 @@ function Book(title, author, pageCount, isRead){
 
 };
 
+Book.prototype.readStatus = function () {
+    console.log(this)
+    if (this.textContent == "Read"){
+                this.textContent = "Unread";
+            } else {
+                this.textContent = "Read";
+            };
+};
+
+
 function addBookToLibrary(title, author, pageCount, isRead){
    myLibrary.push(new Book(title, author, pageCount, isRead));
 };
 
+
+
 function displayBooks(myLibrary){
-    let display = document.querySelector(".bookContainer");
+
+  
+    
     for (i = 0; i < myLibrary.length ; i++){
         /* make it so a new div with a class for the card template n stuff is made that cocntains the content from each book. this for statement is messsed up so research and fix when u work on this later */
        let newCard = document.createElement("div");
@@ -62,6 +72,9 @@ function displayBooks(myLibrary){
         let pageCount = document.createElement("div");
         pageCount.textContent = myLibrary[i].pageCount;
 
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("buttonContainer");
+
         let isRead = document.createElement("button");
         isRead.classList.add("isRead");
         isRead.textContent = (myLibrary[i].isRead);
@@ -71,25 +84,20 @@ function displayBooks(myLibrary){
 
         
 
-        isRead.addEventListener("click", () => {
-            console.log("click");
-            
-            if (isRead.textContent == "Read"){
-                isRead.textContent = "Unread";
-            } else {
-                isRead.textContent = "Read";
-            };
-        });
+        /* isRead.addEventListener("click", ); */
 
-        /* as much as it sucks it takes to clicks to work this is the closests i've gotten. just need to implement the cancel button and get the form screen thing to work and i'm pretty much there to a 'dunctional' library */
+        /*  deleteBook.addEventListener("click", );  */       
+ 
+         
         
-        
-        
-        newCard.append(newTitle, newAuth, pageCount, isRead);
+        buttonContainer.append(isRead, deleteBook);
+        newCard.append(newTitle, newAuth, pageCount, buttonContainer);
         display.append(newCard);
 
     }
 };
+
+
 
 let submit = document.querySelector(".submit");
 
@@ -136,9 +144,21 @@ submit.addEventListener("click", (event) => {
 
 
 
+readButton.addEventListener("click", swapRead);
 
+
+
+
+function swapRead (){
+    if (readButton.textContent == "Read"){
+        readButton.textContent = "Unread";
+    } else {
+        readButton.textContent = "Read";
+    }
+};
 
 addBookToLibrary("Apathy", "Benson", 235, 'Read');
 addBookToLibrary("Conflict", "Adam", 254, 'Unread');
 
 displayBooks(myLibrary);
+swapRead();
