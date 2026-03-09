@@ -21,7 +21,7 @@ let display = document.querySelector(".bookContainer");
 console.log("yooch");
 
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pageCount, isRead){
 
@@ -37,14 +37,17 @@ function Book(title, author, pageCount, isRead){
 
 };
 
-Book.prototype.readStatus = function () {
-    console.log(this)
-    if (this.textContent == "Read"){
-                this.textContent = "Unread";
-            } else {
-                this.textContent = "Read";
-            };
-};
+/* Book.prototype.readStatus = function () {
+    console.log(this.isRead)
+    
+
+       
+console.log(myLibrary);
+}; */
+
+
+
+
 
 
 function addBookToLibrary(title, author, pageCount, isRead){
@@ -59,9 +62,11 @@ function displayBooks(myLibrary){
     
     for (i = 0; i < myLibrary.length ; i++){
         /* make it so a new div with a class for the card template n stuff is made that cocntains the content from each book. this for statement is messsed up so research and fix when u work on this later */
+
        let newCard = document.createElement("div");
         newCard.classList.add("libraryCard");
         newCard.id = myLibrary[i].id;
+        
 
         let newTitle = (document.createElement("div"));
         newTitle.textContent = myLibrary[i].title;
@@ -83,10 +88,47 @@ function displayBooks(myLibrary){
         deleteBook.textContent = "Delete";
 
         
+         isRead.addEventListener("click", function () {
+            console.log(isRead.textContent);
+            if (isRead.textContent == "Read"){
+                isRead.textContent = "Unread";
+            } else {
+                isRead.textContent = "Read";
+            };
+         }); 
 
-        /* isRead.addEventListener("click", ); */
+         let index = myLibrary.indexOf(myLibrary[i]);
+         deleteBook.addEventListener("click", function () {
+                
+                console.log(myLibrary[i]);
+                console.log(index);
+                console.log(i);
 
-        /*  deleteBook.addEventListener("click", );  */       
+                 if (index > -1) 
+                    { // only splice array when item is found
+                    myLibrary.splice(index, 1); // 2nd parameter means remove one item only
+                }
+
+            clearAll();
+            displayBooks(myLibrary);
+            } )
+            
+
+          /* deleteBook.addEventListener("click", function () {
+            let index = myLibrary.indexOf(thingForDelete);
+            console.log(thingForDelete);
+            console.log(index);
+            if (index > -1) { // only splice array when item is found
+            myLibrary.splice(index, 1); // 2nd parameter means remove one item only
+            }
+
+            clearAll();
+            displayBooks(myLibrary);
+
+          });          */
+
+          /* just finger out the shit above and we're golden */
+          
  
          
         
@@ -125,15 +167,14 @@ submit.addEventListener("click", (event) => {
 });
 
  function clearAll(){
-    let main = document.querySelector(".bookContainer");
+     let main = document.querySelector(".bookContainer");
     while (main.firstChild){
         main.removeChild(main.lastChild);
-    }
+    } 
 
     let a = document.getElementById('book_title');
     let b = document.getElementById('book_author');
     let c = document.getElementById('pageCount');
-    let d = document.getElementById('isRead');
     
     a.value = '';
     b.value = '';
@@ -159,6 +200,6 @@ function swapRead (){
 
 addBookToLibrary("Apathy", "Benson", 235, 'Read');
 addBookToLibrary("Conflict", "Adam", 254, 'Unread');
-
+console.log(myLibrary[0].id);
 displayBooks(myLibrary);
 swapRead();
