@@ -6,10 +6,7 @@ body{
     background-color: rgb(199, 184, 134);
 }
 
-.center{
-    display: grid;
-    justify-content: center;
-}
+
 
 .header{
     display: grid;
@@ -32,6 +29,48 @@ body{
     box-shadow: 5px 5px 6px rgb(131, 111, 88);
 
 }
+
+.bookForm{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.formCard{
+    
+    font-size: 2rem;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.formCard > button, .formCard > div > button {
+    font-size: 1.5rem;
+    color: gold;
+    background-color: darkslategrey;
+}
+
+input {
+    border: rgb(0, 83, 83) solid 2px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+input:user-valid{
+    border: rgb(15, 175, 0) solid 2.5px;
+    transition: 1s;
+}
+
+input:focus{
+    box-shadow: 3px 3px 10px  grey;
+    outline: none;
+    border: rgb(6, 109, 104) solid 2px;
+    transition: 0.5s;
+}
+
 
 .bookContainer{
     display: grid;
@@ -64,48 +103,10 @@ body{
     background-color: rgb(83, 65, 25);
 }
 
-.bookForm{
+.center{
     display: grid;
-    align-items: center;
     justify-content: center;
-    padding: 20px;
-    
 }
-
-.formCard{
-    
-    font-size: 2rem;
-    display: grid;
-    text-align: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-input {
-    border: rgb(0, 83, 83) solid 2px;
-    padding: 5px;
-    border-radius: 20px;
-}
-
-input:user-valid{
-    border: rgb(15, 175, 0) solid 2.5px;
-    transition: 1s;
-}
-
-input:focus{
-    box-shadow: 3px 3px 10px  grey;
-    outline: none;
-    border: rgb(6, 109, 104) solid 2px;
-    transition: 0.5s;
-}
-
-.formCard > button, .formCard > div > button {
-    font-size: 1.5rem;
-    color: gold;
-    background-color: darkslategrey;
-}
-
-
 
 .footer{
     background-color: brown;
@@ -128,7 +129,6 @@ input:focus{
     
     
 }
-
 
 #closeButton{
     color: goldenrod;
