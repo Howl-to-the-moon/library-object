@@ -1,10 +1,140 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: .5fr 4fr .5fr;
+    background-color: rgb(199, 184, 134);
+}
 
+.center{
+    display: grid;
+    justify-content: center;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    font-size: 2rem;
+    padding: 20px;
+    box-shadow: 0px 10px 4px rgb(119, 95, 58);
+    margin-bottom: 15px;
+}
+
+.newBook{
+    width: 150px;
+    font-size: 2rem;
+    border-radius: 30px;
+    color: rgb(150, 0, 0);
+    background-color: rgb(218, 255, 243);
+    box-shadow: 5px 5px 6px rgb(131, 111, 88);
+
+}
 
 .bookContainer{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    justify-content: start;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    padding: 20px;
+    
+    gap: 30px;
 }
 
 .bookContainer > div {
-    border: solid red 2px;
+    border: solid rgb(46, 35, 6) 5px;
+    border-left: solid rgb(46, 35, 6) 3px;;
+    background-color: rgb(116, 95, 57);
+    box-shadow: 5px 1px beige;
+    padding: 10px;
+    padding-top: 30px;
+    display: grid;
+    height: 300px;
+    width: 250px;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.bookContainer > div > div > button {
+    font-size: 1.5rem;
+    margin: 10px;
+    color: gold;
+    background-color: rgb(83, 65, 25);
+}
+
+.bookForm{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.formCard{
+    
+    font-size: 2rem;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    border: rgb(0, 83, 83) solid 2px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+input:user-valid{
+    border: rgb(15, 175, 0) solid 2.5px;
+    transition: 1s;
+}
+
+input:focus{
+    box-shadow: 3px 3px 10px  grey;
+    outline: none;
+    border: rgb(6, 109, 104) solid 2px;
+    transition: 0.5s;
+}
+
+.formCard > button, .formCard > div > button {
+    font-size: 1.5rem;
+    color: gold;
+    background-color: darkslategrey;
+}
+
+
+
+.footer{
+    background-color: brown;
+    box-shadow: 0px -5px 4px rgb(119, 95, 58);
+
+    grid-row-start: 3;
+    grid-row-end: 4;
+    
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+#my-dialog{
+    background-color: rgb(43, 17, 0);
+    color: wheat;
+    width: 500px;
+    height: 500px;
+    
+    
+}
+
+
+#closeButton{
+    color: goldenrod;
+    background-color: darkslategrey;
+    font-size: 2rem;
+    margin-left: 200px;
+    margin-top: 30px;
+
 }

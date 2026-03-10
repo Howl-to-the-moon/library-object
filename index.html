@@ -8,37 +8,48 @@
 </head>
 <body>
 
-    <div class="bookForm">
+    <div class="header">
 
-        <button command="show-modal" commandfor="my-dialog">New Book</button>
+        <div class="title">Library Of Antiantithesis</div>
 
-        <dialog id="my-dialog">
-            <form class="formCard">
-                <label for="book_title"> Book Title: </label>
-                <input type="text" id="book_title" required>
+        <div class="bookForm">
 
-                <label for="book_author">Book Author</label>
-                <input type="text" id="book_author" required>
+            <button command="show-modal" commandfor="my-dialog" class="newBook">New Book</button>
 
-                <label for="pageCount">Page Count</label>
-                <input type="number" id="pageCount" required>
+            <dialog id="my-dialog" >
+                <form class="formCard">
+                    
+                    <label for="book_title"> Book Title: </label>
+                    <input type="text" id="book_title" required>
 
-                <label for="isRead">Is Read</label>
-                <button id="isRead" class="isRead" type="button"> Read </button>
+                    <label for="book_author">Book Author:</label>
+                    <input type="text" id="book_author" required>
 
-
-                <button type="submit" class="submit"> Submit </button>
+                    <label for="pageCount">Page Count:</label>
+                    <input type="number" id="pageCount" required>
                 
-            </form>
-            <button commandfor="my-dialog" command="close" id="closeButton">Close</button>
-        </dialog>
+                    <div class="center">
+                    <label for="isRead">Is Read:</label>
+                    <button id="isRead" class="isRead" type="button"> Read </button>
+                    </div>
+                    <button type="submit" class="submit"> Submit </button>
+                    
 
+                </form>
+                                    <button commandfor="my-dialog" command="close" id="closeButton">Close</button>
+
+            </dialog>
+
+        </div>
+        
     </div>
-
-    
+  
 
 
      <div class="bookContainer"></div>
+
+
+     <div class="footer">Howl_TTM \\|// The Odin Project</div>
 
 
 <script src="script.js" defer></script>

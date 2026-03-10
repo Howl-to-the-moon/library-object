@@ -72,10 +72,10 @@ function displayBooks(myLibrary){
         newTitle.textContent = myLibrary[i].title;
 
         let newAuth = document.createElement("div");
-        newAuth.textContent = myLibrary[i].author;
+        newAuth.textContent = `By: ${myLibrary[i].author}`;
         
         let pageCount = document.createElement("div");
-        pageCount.textContent = myLibrary[i].pageCount;
+        pageCount.textContent = `Pages: ${myLibrary[i].pageCount}`;
 
         let buttonContainer = document.createElement("div");
         buttonContainer.classList.add("buttonContainer");
