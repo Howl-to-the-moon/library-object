@@ -8,39 +8,50 @@
 </head>
 <body>
 
-<div class="mainContainer">
     <div class="header">
 
-        <button class="addBook"> Add Book </button>
+        <div class="title">Library Of Antiantithesis</div>
 
+        <div class="bookForm">
+
+            <button command="show-modal" commandfor="my-dialog" class="newBook">New Book</button>
+
+            <dialog id="my-dialog" >
+                <form class="formCard">
+                    
+                    <label for="book_title"> Book Title: </label>
+                    <input type="text" id="book_title" required>
+
+                    <label for="book_author">Book Author:</label>
+                    <input type="text" id="book_author" required>
+
+                    <label for="pageCount">Page Count:</label>
+                    <input type="number" id="pageCount" required>
+                
+                    <div class="center">
+                    <label for="isRead">Is Read:</label>
+                    <button id="isRead" class="isRead" type="button"> Read </button>
+                    </div>
+                    <button type="submit" class="submit"> Submit </button>
+                    
+
+                </form>
+                                    <button commandfor="my-dialog" command="close" id="closeButton">Close</button>
+
+            </dialog>
+
+        </div>
+        
     </div>
-
-    <div class="form hide">
-        <div class="formBackground"></div>
-        <form class="formCard">
-            <label for="book_title"> Book Title: </label>
-            <input type="text" id="book_title" required>
-
-            <label for="book_author">Book Author</label>
-            <input type="text" id="book_author" required>
-
-            <label for="pageCount">Page Count</label>
-            <input type="number" id="pageCount" required>
-
-            <label for="isRead">Is Read</label>
-            <button id="isRead" class="isRead" type="button"> Read </button>
+  
 
 
-            <button type="button" class="submit"> Submit </button>
-            <button type="button" class="cancel"> Cancel </button>
-        </form>
-    </div>
+     <div class="bookContainer"></div>
 
-    <div class="bookContainer"></div>
 
-    <div class="footer"></div></div>
+     <div class="footer">Howl_TTM \\|// The Odin Project</div>
 
-</div>
-    <script src="script.js"></script>
+
+<script src="script.js" defer></script>
 </body>
 </html>

@@ -1,9 +1,27 @@
 
+/* 
+
+3/2. this fucking sucks.
+
+ok so i did quickly fix up the shit so what you select on the menu 
+transfers to the thingy, i just need to fix these two fucking buttons man.
+
+something about prototypes, i just need to skim these lessons again.
+
+the read/unread works!! just when made a function thats apart of
+the thing, not as a prototype. God help me.
+
+*/
+
+
+let readButton = document.querySelector("#isRead");
+let display = document.querySelector(".bookContainer");
+
 
 console.log("yooch");
 
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pageCount, isRead){
 
@@ -19,34 +37,50 @@ function Book(title, author, pageCount, isRead){
 
 };
 
+/* Book.prototype.readStatus = function () {
+    console.log(this.isRead)
+    
+
+       
+console.log(myLibrary);
+}; */
+
+
+
+
+
+
 function addBookToLibrary(title, author, pageCount, isRead){
    myLibrary.push(new Book(title, author, pageCount, isRead));
 };
 
 
-    
 
 function displayBooks(myLibrary){
-    let display = document.querySelector(".bookContainer");
+
+  
+    
     for (i = 0; i < myLibrary.length ; i++){
         /* make it so a new div with a class for the card template n stuff is made that cocntains the content from each book. this for statement is messsed up so research and fix when u work on this later */
+
        let newCard = document.createElement("div");
         newCard.classList.add("libraryCard");
-        newCard.id = myLibrary[i].id;
 
         let newTitle = (document.createElement("div"));
         newTitle.textContent = myLibrary[i].title;
 
         let newAuth = document.createElement("div");
-        newAuth.textContent = myLibrary[i].author;
+        newAuth.textContent = `By: ${myLibrary[i].author}`;
         
         let pageCount = document.createElement("div");
-        pageCount.textContent = myLibrary[i].pageCount;
+        pageCount.textContent = `Pages: ${myLibrary[i].pageCount}`;
+
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("buttonContainer");
 
         let isRead = document.createElement("button");
         isRead.classList.add("isRead");
-        isRead.textContent = (myLibrary[i].isRead);
-
+        isRead.textContent = myLibrary[i].isRead;
         
         
         newCard.append(newTitle, newAuth, pageCount, isRead);
@@ -55,28 +89,9 @@ function displayBooks(myLibrary){
     }
 };
 
-let popUp = document.querySelector(".form");
-function showPopUp(){
-    popUp.classList.remove("hide");
-    popUp.classList.add("show");
-};
 
-function hidePopUp(){
-    popUp.classList.remove("show");
-    popUp.classList.add("hide");
-};
 
-let addBook = document.querySelector(".addBook");
-let cancel = document.querySelector(".cancel");
-let submit = document.querySelector(".submit")
-
- addBook.addEventListener("click", () => {
-    showPopUp();
-}); 
-
-cancel.addEventListener("click", () => {
-    hidePopUp();
-});
+let submit = document.querySelector(".submit");
 
 submit.addEventListener("click", (event) => {
 
@@ -98,40 +113,36 @@ submit.addEventListener("click", (event) => {
 
      clearAll(); 
     displayBooks(myLibrary);
-    hidePopUp();
+    
 });
 
  function clearAll(){
-    let main = document.querySelector(".bookContainer");
+     let main = document.querySelector(".bookContainer");
     while (main.firstChild){
         main.removeChild(main.lastChild);
-    }
+    } 
 
     let a = document.getElementById('book_title');
     let b = document.getElementById('book_author');
     let c = document.getElementById('pageCount');
     let d = document.getElementById('isRead');
-    
+    console.log(d.value);
     a.value = '';
     b.value = '';
     c.value = '';
     
 };
 
-let isReadButton = document.querySelector(".isRead");
+const isReadButton = document.querySelector(".isRead");
 isReadButton.addEventListener("click", () => {
     if (isReadButton.textContent == "Read"){
-        isReadButton.textContent = "Unread";
+        isReadButton.textContent == "Unread";
     } else {
-        isReadButton.textContent = "Read";
+        isReadButton.textContent == "Read";
     }
-});
- 
+};
+
 addBookToLibrary("Apathy", "Benson", 235, 'Read');
 addBookToLibrary("Conflict", "Adam", 254, 'Unread');
-
+console.log(myLibrary[0].id);
 displayBooks(myLibrary);
-
-console.log(isReadButton.textContent);
-
-console.table(isReadButton);
